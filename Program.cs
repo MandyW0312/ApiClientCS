@@ -45,7 +45,7 @@ namespace ApiClientCS
         static async Task ShowAllBreweriesAsync()
         {
             var client = new HttpClient();
-            var responseAsStream = await client.GetStreamAsync("https://api.openbrewerydb.org/breweries");
+            var responseAsStream = await client.GetStreamAsync("https://api.openbrewerydb.org/breweries?per_page=50");
             List<Brewery> breweries = await JsonSerializer.DeserializeAsync<List<Brewery>>(responseAsStream);
 
             Console.WriteLine($"There are {breweries.Count()} Breweries in the Breweries API");
